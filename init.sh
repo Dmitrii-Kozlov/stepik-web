@@ -16,8 +16,9 @@ mysql -uroot -e "grant all privileges on stepic_web.* to 'box'@'localhost' with 
 
 cd ask
 
-gunicorn -b 0.0.0.0:8000 ask.wsgi
-
 python3 manage.py makemigrations
 
 python3 manage.py migrate
+
+gunicorn -b 0.0.0.0:8000 ask.wsgi
+
