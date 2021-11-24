@@ -4,21 +4,6 @@ from django.conf import settings
 
 User = settings.AUTH_USER_MODEL
 
-"""
-QuestionManager - менеджер модели Question
-new - метод возвращающий последние добавленные вопросы
-popular - метод возвращающий вопросы отсортированные по рейтингу
-
-    def new(self, user=None):
-        user_obj = None
-        if user is not None:
-            if user.is_authenticated:
-                user_obj = user
-        return self.model.objects.create(user=user_obj)
-
-"""
-
-
 class QuestionManager(models.Manager):
     def new(self, number_of_questions=5):
         return self.model.objects.all().order_by("-added_at")[:number_of_questions]
