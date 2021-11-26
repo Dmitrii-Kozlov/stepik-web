@@ -1,14 +1,14 @@
 
 from django.urls import path
 
-from .views import test
+from .views import test, detail_question, new_list, popular
 
 urlpatterns = [
-    path("", test),
+    path("", new_list, name="main"),
     path("login/", test),
     path("signup/", test),
-    path("question/<q>/", test),
+    path("question/<pk>/", detail_question, name="detail"),
     path("ask/", test),
-    path("popular/", test),
+    path("popular/", popular, name="popular"),
     path("new/", test)
 ]
