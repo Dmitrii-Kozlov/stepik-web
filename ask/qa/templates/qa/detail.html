@@ -11,6 +11,11 @@
     <li>{{answer.text}}</li>
     {% endfor %}
 </ol>
-
+<h3>Answer</h3>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Answer</button>
+</form>
 
 {% endblock %}
