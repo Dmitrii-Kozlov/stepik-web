@@ -16,10 +16,10 @@ def detail_question(request, pk):
         form = AnswerForm(request.POST)
         if form.is_valid():
             answer = form.save()
-            return HttpResponse('200')
+            return HttpResponse(status=200)
             # return HttpResponseRedirect(question.get_absolute_url())
         else:
-            return HttpResponse('200')
+            return HttpResponse(status=200)
     else:
         form = AnswerForm(initial={"question": question.pk})
 
