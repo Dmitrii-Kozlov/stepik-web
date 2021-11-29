@@ -24,7 +24,10 @@ class AnswerForm(forms.Form):
             raise forms.ValidationError("Text must be filled!")
 
     def save(self):
-        question = Question.objects.get(pk=self.cleaned_data['question'])
+        try:
+            question = Question.objects.get(pk=self.cleaned_data['question'])
+        except Question.DoesNotExist:
+                question = None
         answer = Answer.objects.create(
             text=self.cleaned_data['text'],
             question=question
