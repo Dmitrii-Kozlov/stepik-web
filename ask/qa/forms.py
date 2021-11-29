@@ -3,8 +3,10 @@ from .models import Question, Answer
 
 
 class AskForm(forms.Form):
-    title = forms.CharField(max_length=255)
-    text = forms.CharField(widget=forms.Textarea)
+    title = forms.CharField(max_length=255, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Name your question'}))
+    text = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'form-control', 'placeholder': 'Enter your question'}))
 
     def clean(self):
         if len(self.cleaned_data['title']) < 1 or len(self.cleaned_data['text']) < 1:
@@ -16,7 +18,8 @@ class AskForm(forms.Form):
 
 
 class AnswerForm(forms.Form):
-    text = forms.CharField(widget=forms.Textarea)
+    text = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'form-control', 'placeholder': 'Enter your answer'}))
     question = forms.IntegerField(widget=forms.HiddenInput(), required=False)
 
     def clean(self):
