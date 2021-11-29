@@ -17,6 +17,8 @@ def detail_question(request, pk):
         if form.is_valid():
             answer = form.save()
             return HttpResponseRedirect(question.get_absolute_url())
+        else:
+            return HttpResponse('200')
     else:
         form = AnswerForm(initial={"question": question.pk})
 
