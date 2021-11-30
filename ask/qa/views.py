@@ -91,7 +91,7 @@ def signup(request):
         user.set_password(password)
         user.save()
         login(request, user)
-        return redirect('/')
+        return HttpResponseRedirect('/')
     else:
         form = UserSignupForm()
     context = {
@@ -108,7 +108,7 @@ def login_user(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/')
+            return HttpResponseRedirect('/')
     else:
         form = UserLoginForm()
     context = {
