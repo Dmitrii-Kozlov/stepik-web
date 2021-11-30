@@ -6,9 +6,10 @@
 
 <h1>{{question.title}}</h1>
 <p>{{question.text}}</p>
+<p>Created by {{question.author}}</p>
 <ol>
     {% for answer in question.answer_set.all %}
-    <li>{{answer.text}}</li>
+    <li>{{answer.text}} - by {{answer.author}}</li>
     {% endfor %}
 </ol>
 <h3>Answer</h3>

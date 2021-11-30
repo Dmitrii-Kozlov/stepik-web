@@ -2,6 +2,22 @@ from django import forms
 from .models import Question, Answer
 
 
+class UserSignupForm(forms.Form):
+    username = forms.CharField(max_length=255, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Username'}))
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(max_length=255, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Username'}))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}))
+
+
 class AskForm(forms.Form):
     title = forms.CharField(max_length=255, widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'Name your question'}))
